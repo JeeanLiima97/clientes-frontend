@@ -21,8 +21,8 @@
 
         <p class="h4 mb-4">Cadastro</p>
 
-        <div class="form-row mb-4">
-            <div class="col">
+        <div class="form-row mb-4" *ngIf="cliente.id">
+            <div class="col" >
                 <!-- ID -->
                 <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Id" disabled
                 [ngModel]="cliente.id" name="id">
