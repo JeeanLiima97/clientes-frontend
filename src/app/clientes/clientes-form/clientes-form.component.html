@@ -1,66 +1,73 @@
 <div class="container-fluid">
     <h1 class="mt-4">Clientes</h1>
-   
 
 
-<div class="container-fluid">
 
-  
-    <form class="text-center border border-light p-5" #clienteForm="ngForm" (ngSubmit)="onSubmit()">
-        
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert alert-success" role="alert" *ngIf="sucess==true">
-                    Cliente Salvo com Sucesso
-                  </div>
-                  <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
-                    {{erro}}
-                  </div>
-            </div>
-        </div>
+    <div class="container-fluid">
 
-        <p class="h4 mb-4">Cadastro</p>
 
-        <div class="form-row mb-4" *ngIf="cliente.id">
-            <div class="col" >
-                <!-- ID -->
-                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Id" disabled
-                [ngModel]="cliente.id" name="id">
-            </div>
-            <div class="col">
-                <!-- Data cadastro -->
-                <input type="text" id="defaultRegisterFormFirstName" class="form-control" disabled placeholder="Data cadastro"
-                 [ngModel]="cliente.dataCadastro" name="dataCadastro">
-            </div>
+        <form class="text-center border border-light p-5" #clienteForm="ngForm" (ngSubmit)="onSubmit()">
 
-        </div>
-
-        <div class="form-row mb-4">
-            <div class="col">
-        <!-- Nome -->
-        <input type="text" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="Nome"
-         [(ngModel)]="cliente.nome" name="nome">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success" role="alert" *ngIf="sucess==true">
+                        Cliente Salvo com Sucesso
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                        {{erro}}
+                    </div>
                 </div>
-        <!-- CPF -->
-        <div class="col">
+            </div>
 
-        <input type="text" id="defaultRegisterFormPassword" class="form-control" placeholder="CPF"
-        [(ngModel)]="cliente.cpf" name="cpf">
-        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-            Informe um CPF valido
-        </small>
-        </div>
-        </div>
+            <p class="h4 mb-4">Cadastro</p>
+
+            <div class="form-row mb-4" *ngIf="cliente.id">
+                <div class="col">
+                    <!-- ID -->
+                    <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Id" disabled
+                        [ngModel]="cliente.id" name="id">
+                </div>
+                <div class="col">
+                    <!-- Data cadastro -->
+                    <input type="text" id="defaultRegisterFormFirstName" class="form-control" disabled
+                        placeholder="Data cadastro" [ngModel]="cliente.dataCadastro" name="dataCadastro">
+                </div>
+
+            </div>
+
+            <div class="form-row mb-4">
+                <div class="col">
+                    <!-- Nome -->
+                    <input type="text" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="Nome"
+                        [(ngModel)]="cliente.nome" name="nome">
+                </div>
+                <!-- CPF -->
+                <div class="col">
+
+                    <input type="text" id="defaultRegisterFormPassword" class="form-control" placeholder="CPF"
+                        [(ngModel)]="cliente.cpf" name="cpf">
+                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        Informe um CPF valido
+                    </small>
+                </div>
+            </div>
 
 
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-success" type="submit">
 
-        <!-- Sign up button -->
-        <button class="btn btn-success" type="submit" >
-            
-            <i class="fa fa-save"></i>   Salvar</button>
+                        <i class="fa fa-save"></i> Salvar</button>
+                    <button class="btn btn-danger" type="button" (click)="voltarListagem()">
+
+                        <i class="fa fa-arrow-alt-circle-left"></i> Voltar</button>
+
+                </div>
+
+            </div>
 
 
-    </form>
+        </form>
 
 
-</div>
+    </div>
