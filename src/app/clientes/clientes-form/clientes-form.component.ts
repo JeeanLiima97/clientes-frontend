@@ -1,3 +1,4 @@
+import { Cliente } from './../cliente';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesFormComponent implements OnInit {
 
+  cliente: Cliente
   constructor() { }
 
   ngOnInit(): void {
