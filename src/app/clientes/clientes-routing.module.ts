@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'clientes-lista',
     component: ClientesListaComponent
+  },
+  {
+    path: 'clientes-form/:id',
+    component: ClientesFormComponent
   }
 
 ];
