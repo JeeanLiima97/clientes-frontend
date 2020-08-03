@@ -10,13 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class ClientesFormComponent implements OnInit {
 
   cliente: Cliente
- 
+
   sucess: boolean = false;
 
-  errors: string[];
+  errors: String[];
 
   constructor(private service: ClientesService) {
-   this.cliente = new Cliente()
+    this.cliente = new Cliente()
 
   }
 
@@ -24,9 +24,14 @@ export class ClientesFormComponent implements OnInit {
   }
   onSubmit() {
     this.service.salvar(this.cliente)
-    .subscribe( response =>{
-      this.sucess = true;
-    })
-   
+      .subscribe(response => {
+        this.sucess = true;
+      }, errorResponse => {
+        this.errors = errorResponse.error.erros;
+
+
+      }
+      )
+
   }
 }
