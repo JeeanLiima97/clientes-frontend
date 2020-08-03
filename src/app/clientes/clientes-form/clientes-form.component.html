@@ -7,6 +7,17 @@
 
   
     <form class="text-center border border-light p-5" #clienteForm="ngForm" (ngSubmit)="onSubmit()">
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="sucess==true">
+                    Cliente Salvo com Sucesso
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                    {{erro}}
+                  </div>
+            </div>
+        </div>
 
         <p class="h4 mb-4">Cadastro</p>
 
