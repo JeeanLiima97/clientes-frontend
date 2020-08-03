@@ -4,32 +4,37 @@
 
 
 <div class="container-fluid">
-    <form class="text-center border border-light p-5" action="#!">
+
+  
+    <form class="text-center border border-light p-5" #clienteForm="ngForm" (ngSubmit)="onSubmit()">
 
         <p class="h4 mb-4">Cadastro</p>
 
         <div class="form-row mb-4">
             <div class="col">
-                <!-- First name -->
-                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Id" disabled>
+                <!-- ID -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Id" disabled
+                [ngModel]="cliente.id" name="id">
             </div>
             <div class="col">
-                <!-- First name -->
-                <input type="text" id="defaultRegisterFormFirstName" class="form-control" disabled placeholder="Data cadastro">
+                <!-- Data cadastro -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" disabled placeholder="Data cadastro"
+                 [ngModel]="cliente.dataCadastro" name="dataCadastro">
             </div>
 
         </div>
 
         <div class="form-row mb-4">
             <div class="col">
-        <!-- E-mail -->
-        <input type="name" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="Nome">
+        <!-- Nome -->
+        <input type="text" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="Nome"
+         [(ngModel)]="cliente.nome" name="nome">
                 </div>
-        <!-- Password -->
+        <!-- CPF -->
         <div class="col">
 
         <input type="text" id="defaultRegisterFormPassword" class="form-control" placeholder="CPF"
-            aria-describedby="defaultRegisterFormPasswordHelpBlock">
+        [(ngModel)]="cliente.cpf" name="cpf">
         <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
             Informe um CPF valido
         </small>
@@ -39,7 +44,7 @@
 
 
         <!-- Sign up button -->
-        <button class="btn btn-success" type="submit">
+        <button class="btn btn-success" type="submit" >
             
             <i class="fa fa-save"></i>   Salvar</button>
 
