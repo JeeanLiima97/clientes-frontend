@@ -17,12 +17,11 @@ export class ClientesService {
 
   }
 
-  getCliente(): Cliente {
-    let cliente: Cliente = new Cliente();
-    cliente.nome = 'Fulano'
-    cliente.cpf = '432142343'
-    return cliente;
+  getClientes(): Observable<Cliente[]>{
+    return this.http.get<Cliente[]>('http://localhost:8083/api/clientes');
   }
+
+
 
 
 
