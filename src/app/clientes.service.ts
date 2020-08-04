@@ -24,15 +24,17 @@ export class ClientesService {
   }
 
 
-  getClientes(): Observable<Cliente[]>{
+  getClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>('http://localhost:8083/api/clientes');
   }
 
-  getClienteById(id: number): Observable<any>{
+  getClienteById(id: number): Observable<any> {
     return this.http.get<Cliente>(`http://localhost:8083/api/clientes/${id}`);
   }
 
-
+  deletar(cliente: Cliente): Observable<any> {
+    return this.http.delete<any>(`http://localhost:8083/api/clientes/${cliente.id}`);
+  }
 
 
 }
