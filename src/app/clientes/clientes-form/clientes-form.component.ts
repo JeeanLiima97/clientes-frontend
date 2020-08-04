@@ -1,7 +1,8 @@
+import { Observable } from 'rxjs';
 import { ClientesService } from './../../clientes.service';
 import { Cliente } from './../cliente';
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router'
+import { Router, ActivatedRoute, Params } from '@angular/router'
 @Component({
   selector: 'app-clientes-form',
   templateUrl: './clientes-form.component.html',
@@ -19,37 +20,56 @@ export class ClientesFormComponent implements OnInit {
 
   constructor(private service: ClientesService,
     private route: Router,
-    private activatedroute : ActivatedRoute) {
+    private activatedroute: ActivatedRoute) {
     this.cliente = new Cliente()
 
   }
 
   ngOnInit(): void {
-   let params = this.activatedroute.params
-   if(params && params.value && params.value.id){
-     this.id = params.value.id;
-     this.service
-     .getClienteById(this.id)
-     .subscribe(response=> this.cliente = response)
-   }
-    
+    let params : Observable<Params>= this.activatedroute.params
+    params.subscribe(urlParams =>{
+      this.id = urlParams['id'];
+      if(this.id){
+        this.service
+      .getClienteById(this.id)
+      .subscribe(response => this.cliente = response)
+      }
+      
+    })
+  
+
   }
   onSubmit() {
-    this.service.salvar(this.cliente)
-      .subscribe(response => {
+    if (this.id) {
+
+      this.service.atualizar(this.cliente)
+      .subscribe(response=>{
         this.sucess = true;
         this.errors = null;
-        this.cliente = response;
-      }, errorResponse => {
-        this.sucess = false;
-        this.errors = errorResponse.error.erros; 
-
-
+      },errorResponse =>{
+        this.errors ['Erro ao atualizar o cliente']
       }
+
       )
 
+    } else {
+
+
+      this.service.salvar(this.cliente)
+        .subscribe(response => {
+          this.sucess = true;
+          this.errors = null;
+          this.cliente = response;
+        }, errorResponse => {
+          this.sucess = false;
+          this.errors = errorResponse.error.erros;
+
+
+        }
+        )
+    }
   }
-  voltarListagem(){
+  voltarListagem() {
     this.route.navigate(['/clientes-lista'])
   }
 }
