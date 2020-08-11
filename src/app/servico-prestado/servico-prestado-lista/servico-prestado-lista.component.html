@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    <form #consultaform="ngForm" (submit)="consultar()" >
+    <form #consultaform="ngForm" (submit)="consultar()">
         <div class="row">
             <div class="col md-6">
                 <label for="inputNome">Nome Cliente:</label>
@@ -27,15 +27,47 @@
             </div>
 
         </div>
-<br>
+        <br />
         <div class="row">
             <div class="col-md-3">
-                <button type="submit" class="btn btn-primary "> 
-                    <i class="fa fa-search"></i>  Consultar </button>
+                <button type="submit" class="btn btn-primary ">
+                    <i class="fa fa-search"></i> Consultar </button>
             </div>
         </div>
     </form>
 
+
+
+    <br />
+    <div class="row">
+        <div class="alert alert-warning" role="alert" *ngIf="message">
+            {{message}}
+
+        </div>
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cliete</th>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let s of servicoPrestadoBusca">
+                        <td>{{s.cliente.nome}}</td>
+                        <td>{{s.descricao}}</td>
+                        <td>R$ {{s.valor}}</td>
+                        <td>{{s.data}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
 
 
 </div>
